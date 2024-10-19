@@ -1,10 +1,15 @@
 <script lang="ts">
 	import '$lib/datetime';
-	import { cn } from '$lib/utils';
 	import Authors from './Authors.svelte';
 	import Countdown from './Countdown.svelte';
 	import { EVENTS } from './data';
+	import Progress from './Progress.svelte';
 	import Timezone from './Timezone.svelte';
+
+	const MINUTE = 1;
+	const HOUR = 60 * MINUTE;
+	const DAY = 24 * HOUR;
+	const WEEK = 7 * DAY;
 
 	const COUNTDOWN_RANGE =
 		EVENTS.reduce((acc, event) => {
@@ -17,51 +22,26 @@
 	<ul class="grid w-full gap-8">
 		{#each EVENTS as event}
 			{#if event.date}
-				<li class="grid border-t border-mono-900 first-of-type:border-t-0">
-					<!-- top -->
-					<div class="flex items-center justify-between gap-8 px-4 py-6">
-						<!-- Overview -->
-						<div class="flex items-center gap-6">
-							<!-- <div class="w-20 h-20 rounded-xl bg-mono-800"></div> -->
-							<h2 class="text-2xl leading-tight">{event.title}</h2>
-						</div>
-
-						<!-- Authors -->
+				<li class="grid gap-4 p-4">
+					<!-- Overview -->
+					<div class="flex items-center justify-between gap-8 p-4">
+						<h2 class="text-2xl leading-tight">{event.title}</h2>
 						<Authors people={event.authors} />
 					</div>
-
-					<!-- bottom -->
 					<div
-						class={cn(
-							'relative rounded-xl overflow-hidden ring-1 ring-primary-600/20 p-4 flex items-center justify-between gap-8 z-0',
-							event.color === 'orange' && 'ring-orange-600/20'
-						)}
+						class="grid grid-cols-2 rounded-xl overflow-hidden border bg-mono-800 gap-px border-mono-800"
 					>
-						<!-- Timezones -->
-						<div class="flex flex-col gap-2">
+						<div class="flex flex-col justify-center gap-4 p-4 bg-mono-950">
 							<Timezone label="PST" timezone={event.timezone} date={event.date} />
 							<Timezone label="Local" timezone={null} date={event.date} />
 						</div>
-
-						<!-- Countdown -->
-						<Countdown date={event.date} />
-
-						<!-- Progress -->
-						<div
-							class={cn(
-								'inset-0 right-auto bg-primary-600/40 absolute -z-10 rounded-xl',
-								event.color === 'orange' && 'bg-orange-600/40'
-							)}
-							style="width: {((COUNTDOWN_RANGE - event.minutes_until) / COUNTDOWN_RANGE) *
-								100}%; a:{event.minutes_until}; b: {COUNTDOWN_RANGE}"
-						></div>
-						<div
-							class={cn(
-								'inset-0 w-full bg-primary-600/10 absolute -z-10 rounded-xl',
-								event.color === 'orange' && 'bg-orange-600/10'
-							)}
-						></div>
+						<div class="grid p-4 py-8 gap-4 place-items-center bg-mono-950">
+							<Countdown date={event.date} />
+						</div>
 					</div>
+
+					<!-- bottom -->
+					<Progress color={event.color} minutes={event.minutes_until} />
 				</li>
 			{/if}
 		{/each}

@@ -147,3 +147,29 @@ export function getHoursInCurrentMonth(date: Date): number {
 	const hoursInMonth = daysInMonth * 24; // Multiply days by 24 to get the number of hours
 	return hoursInMonth;
 }
+
+const MINUTE = 1;
+const HOUR = 60 * MINUTE;
+const DAY = 24 * HOUR;
+const WEEK = 7 * DAY;
+const MONTH = WEEK * 4;
+
+/**
+ * Normalizes the distance to a value between 0 and 1, where:
+ * - 1 represents 0 minutes remaining (event happening now)
+ * - 0 represents the maximum minutes remaining.
+ *
+ * @param distance_in_minutes - The minutes until the event starts.
+ * @param max_minutes - The maximum possible time until an event.
+ * @returns The normalized percentage value between 0 and 1.
+ */
+export function normalize_distance(
+	distance_in_minutes: number,
+	max_minutes: number = MONTH // 1 month in minutes
+): number {
+	// Clamp the distance so that anything more than max_minutes is considered as max_minutes
+	const clamped_distance = Math.min(Math.max(distance_in_minutes, 0), max_minutes);
+
+	// Calculate the normalized value: 1 for now (0 minutes), 0 for the maximum distance
+	return 1 - clamped_distance / max_minutes;
+}

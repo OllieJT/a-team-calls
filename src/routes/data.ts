@@ -12,6 +12,9 @@ const timezone = {
 	London: 'Europe/London',
 	Paris: 'Europe/Paris'
 } as const;
+export type Timezone = (typeof timezone)[keyof typeof timezone];
+
+export type Color = 'primary' | 'orange';
 
 function friday_calls(): Date[] {
 	const nearest = spacetime(new Date(), timezone.PST).day('friday').hour(12).minute(0).second(0);
@@ -65,8 +68,8 @@ export type Event = {
 	title: string;
 	authors: Person[];
 	date: Date | null;
-	timezone: (typeof timezone)[keyof typeof timezone];
-	color: 'primary' | 'orange';
+	timezone: Timezone;
+	color: Color;
 };
 
 export const EVENTS = (
