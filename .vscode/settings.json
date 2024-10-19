@@ -1,0 +1,62 @@
+{
+	"[json]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.codeActionsOnSave": {
+			"source.fixAll.prettier": "explicit"
+		}
+	},
+	"[typescript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.codeActionsOnSave": {
+			"source.fixAll.prettier": "explicit",
+			"source.organizeImports": "explicit"
+		}
+	},
+	"[javascript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.codeActionsOnSave": {
+			"source.organizeImports": "explicit"
+		}
+	},
+
+	"files.associations": {
+		".css": "postcss"
+	},
+	// "eslint.rules.customizations": [{ "rule": "*", "severity": "warn" }],
+	"typescript.tsdk": "node_modules/typescript/lib",
+	"editor.formatOnSave": true,
+	"editor.formatOnType": false,
+	"explorer.compactFolders": false,
+	"files.exclude": {
+		"**/.cache": true,
+		"**/.DS_Store": true,
+		"**/.gitattributes": true,
+		"**/*-lock.*": true,
+		"**/*.Identifier": true,
+		"**/*.map": true,
+		"**/.turbo": true,
+		"**/node_modules": true,
+		"**/tsconfig.tsbuildinfo": true,
+		"**/.eslintcache": true,
+		"**/.svelte-kit": true,
+		"**/build": true,
+		"**/.vercel": true
+	},
+	"files.watcherExclude": {
+		"**/node_modules": true,
+		"**/.svelte-kit": true,
+		"**/.vercel": true,
+		"**/_unused": true
+	},
+	"problems.sortOrder": "severity",
+	"todo-tree.tree.scanMode": "workspace only",
+	"tailwindCSS.experimental.classRegex": ["class:\\s*?[\"'`]([^\"'`]*).*?,"],
+
+	"cssvar.files": ["./src/app.css"],
+
+	// Do not ignore node_modules css files, which is ignored by default
+	"cssvar.ignore": [],
+
+	// add support for autocomplete in JS or JS like files
+	"cssvar.extensions": ["css", "postcss", "svelte"]
+}
