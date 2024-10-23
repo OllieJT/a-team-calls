@@ -1,7 +1,7 @@
 <script lang="ts">
+	import type { Color } from '$lib/data';
 	import { normalize_distance } from '$lib/datetime';
 	import { cn } from '$lib/utils';
-	import type { Color } from './data';
 
 	const {
 		class: className,

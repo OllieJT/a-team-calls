@@ -1,10 +1,10 @@
 <script lang="ts">
+	import Authors from '$components/Authors.svelte';
+	import Countdown from '$components/Countdown.svelte';
+	import Progress from '$components/Progress.svelte';
+	import Timezone from '$components/Timezone.svelte';
+	import { EVENTS } from '$lib/data';
 	import '$lib/datetime';
-	import Authors from './Authors.svelte';
-	import Countdown from './Countdown.svelte';
-	import { EVENTS } from './data';
-	import Progress from './Progress.svelte';
-	import Timezone from './Timezone.svelte';
 
 	const MINUTE = 1;
 	const HOUR = 60 * MINUTE;

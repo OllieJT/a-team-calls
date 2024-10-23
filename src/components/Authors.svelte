@@ -1,6 +1,6 @@
 <script lang="ts">
+	import type { Person } from '$lib/data';
 	import { cn } from '$lib/utils';
-	import type { Person } from './data';
 
 	const { class: className, people }: { class?: string; people: Person[] } = $props();
 </script>
