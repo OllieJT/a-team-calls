@@ -18,24 +18,28 @@
 		}, 0) * 2;
 </script>
 
-<main class="py-16 px-8 w-full max-w-7xl mx-auto">
+<main class="~py-4/16 ~px-0/8 w-full max-w-7xl mx-auto">
 	<ul class="grid w-full gap-8">
 		{#each EVENTS as event}
 			{#if event.date}
-				<li class="grid gap-4 p-4">
+				<li class="grid gap-4 ~p-1/4">
 					<!-- Overview -->
-					<div class="flex items-center justify-between gap-8 p-4">
-						<h2 class="text-2xl leading-tight">{event.title}</h2>
-						<Authors people={event.authors} />
+					<div
+						class="flex flex-col items-center justify-between gap-x-8 ~gap-y-2/4 ~p-2/4 md:flex-row"
+					>
+						<h2 class="text-2xl flex-auto leading-tight">{event.title}</h2>
+						<Authors class="w-max" people={event.authors} />
 					</div>
 					<div
-						class="grid grid-cols-2 rounded-xl overflow-hidden border bg-mono-800 gap-px border-mono-800"
+						class="grid frid-cols-1 grid-rows-2 md:grid-rows-1 md:grid-cols-2 rounded-xl overflow-hidden border bg-mono-800 gap-px border-mono-800"
 					>
-						<div class="flex flex-col justify-center gap-4 p-4 bg-mono-950">
+						<div
+							class="flex flex-col items-center justify-center md:justify-start md:items-start gap-4 ~p-2/4 bg-mono-950"
+						>
 							<Timezone label="PST" timezone={event.timezone} date={event.date} />
 							<Timezone label="Local" timezone={null} date={event.date} />
 						</div>
-						<div class="grid p-4 py-8 gap-4 place-items-center bg-mono-950">
+						<div class="grid ~p-2/4 gap-4 place-items-center bg-mono-950">
 							<Countdown date={event.date} />
 						</div>
 					</div>
