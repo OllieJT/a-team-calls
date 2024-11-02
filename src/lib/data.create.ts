@@ -5,7 +5,15 @@ import spacetime from 'spacetime';
 import type { Picture } from 'vite-imagetools';
 
 export function createPerson(data: { name: string; image: Picture; url: string }) {
-	return data;
+	const url = new URL(data.url);
+	url.searchParams.set('utm_source', 'accelerator');
+	url.searchParams.set('utm_medium', 'website');
+	url.searchParams.set('utm_campaign', 'A-Team-Calls');
+
+	return {
+		...data,
+		url: url.toString(),
+	};
 }
 export type Person = ReturnType<typeof createPerson>;
 
