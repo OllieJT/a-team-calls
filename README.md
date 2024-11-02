@@ -1,38 +1,59 @@
-# create-svelte
+# A-Team Calls
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
+I'm intentionally keeping this Readme very minimal right now.
 
-## Creating a project
+## Contributions
 
-If you're seeing this, you've probably already done this step. Congrats!
+### Content Contributions
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+You can find the data that feeds into the app at `/src/data/*`
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+#### People
+
+`/src/data/people.ts`
+Mini profiles for Ben, Steph, and each of the guides.
+Use the `createPerson()` function to create each person.
+
+#### Events
+
+`/src/data/event.ts`
+Template for each of the call types. This is used to reduce repetition when scheduling calls.
+Use the `createEvent()` function to create each event template.
+
+#### Schedule
+
+`/src/data/schedule.ts`
+Past and future calls, each one defines a dare and references an event template. Filtering and sorting is handle within the application.
+
+Use the `createWeeklyCall()` or `createOneCall()` function to create each schedule.
+
+`createWeeklyCall()` will ` **automatically generate a date** for the next call. This must be for calls that _always_ happen _every_ week at the same time.
+
+Alternatively, `createOneCall()` will schedule one specific call.
+
+### Other Contributions
+
+If your changes go beyond content, or bug fixes, please create an issue to discuss your proposed changes before filing a pull-request. This will avoid the risk of any time being spent on a PR that is not in line with this projects goals.
 
 ## Developing
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+I'm assuming you have node and pnpm setup.
 
 ```bash
-npm run dev
+# Install dependencies
+pnpm i
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+# Run the development server
+pnpm dev
 ```
 
 ## Building
 
-To create a production version of your app:
+To create a production version of the app:
 
 ```bash
-npm run build
+npm build
+
+# Serve the production version
+pnpm preview
 ```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
