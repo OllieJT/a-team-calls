@@ -18,13 +18,13 @@
 
 <div
 	class={cn(
-		'grid grid-cols-3 gap-2 font-mono text-center tracking-widest text-white/60',
-		className
+		'grid grid-cols-3 gap-2 text-center font-mono tracking-widest text-white/60',
+		className,
 	)}
 >
 	<!-- days -->
 	<div
-		class="bg-white rounded-lg px-2 py-3 text-xl leading-none text-mono-950 col-start-1 row-start-1"
+		class="col-start-1 row-start-1 rounded-lg bg-white px-2 py-3 text-xl leading-none text-mono-950"
 	>
 		{pad(days)}
 	</div>
@@ -32,7 +32,7 @@
 
 	<!-- hours -->
 	<div
-		class="bg-white rounded-lg px-2 py-3 text-xl leading-none text-mono-950 col-start-2 row-start-1"
+		class="col-start-2 row-start-1 rounded-lg bg-white px-2 py-3 text-xl leading-none text-mono-950"
 	>
 		{pad(hours)}
 	</div>
@@ -40,7 +40,7 @@
 
 	<!-- minutes -->
 	<div
-		class="bg-white rounded-lg px-2 py-3 text-xl leading-none text-mono-950 col-start-3 row-start-1"
+		class="col-start-3 row-start-1 rounded-lg bg-white px-2 py-3 text-xl leading-none text-mono-950"
 	>
 		{pad(minutes)}
 	</div>

@@ -7,7 +7,7 @@ import {
 	isFriday,
 	nextFriday,
 	setDay,
-	startOfDay
+	startOfDay,
 } from 'date-fns';
 
 type Timestamp = `${number}${number}:${number}${number}`;
@@ -19,7 +19,7 @@ type Timestamp = `${number}${number}:${number}${number}`;
  */
 export function getNextFridayEvents({
 	eventTime,
-	timezone
+	timezone,
 }: {
 	eventTime: Timestamp;
 	timezone: string;
@@ -41,7 +41,7 @@ export function getNextFridayEvents({
 	// Return an array of the next two occurrences in the local timezone.
 	return [
 		new Date(firstOccurrence.toLocaleString('en-US', { timeZone: timezone })),
-		new Date(secondOccurrence.toLocaleString('en-US', { timeZone: timezone }))
+		new Date(secondOccurrence.toLocaleString('en-US', { timeZone: timezone })),
 	];
 }
 
@@ -56,7 +56,7 @@ export function getNextMonthlyEvents({
 	eventTime,
 	timezone,
 	weekNumber,
-	weekday
+	weekday,
 }: {
 	weekday: number;
 	weekNumber: number;
@@ -84,7 +84,7 @@ export function getNextMonthlyEvents({
 
 	return [
 		new Date(firstOccurrence.toLocaleString('en-US', { timeZone: timezone })),
-		new Date(secondOccurrence.toLocaleString('en-US', { timeZone: timezone }))
+		new Date(secondOccurrence.toLocaleString('en-US', { timeZone: timezone })),
 	];
 }
 
@@ -133,7 +133,7 @@ export function getMostRecentDate(dates: Date[]): Date | null {
 	// Return the most recent valid date
 	return validDates.reduce(
 		(mostRecent, current) => (isAfter(current, mostRecent) ? current : mostRecent),
-		validDates[0]
+		validDates[0],
 	);
 }
 
@@ -165,7 +165,7 @@ const MONTH = WEEK * 4;
  */
 export function normalize_distance(
 	distance_in_minutes: number,
-	max_minutes: number = MONTH // 1 month in minutes
+	max_minutes: number = MONTH, // 1 month in minutes
 ): number {
 	// Clamp the distance so that anything more than max_minutes is considered as max_minutes
 	const clamped_distance = Math.min(Math.max(distance_in_minutes, 0), max_minutes);

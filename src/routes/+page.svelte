@@ -9,7 +9,7 @@
 	const { data } = $props();
 </script>
 
-<main class="~py-4/16 ~px-0/8 w-full max-w-7xl mx-auto">
+<main class="mx-auto w-full max-w-7xl ~px-0/8 ~py-4/16">
 	<ul class="grid w-full gap-8">
 		{#each data.scheduledEvents.future as { event, hosts, schedule }}
 			{#if schedule}
@@ -18,19 +18,19 @@
 					<div
 						class="flex flex-col items-center justify-between gap-x-8 ~gap-y-2/4 ~p-2/4 md:flex-row"
 					>
-						<h2 class="text-2xl flex-auto leading-tight">{event.title}</h2>
+						<h2 class="flex-auto text-2xl leading-tight">{event.title}</h2>
 						<Authors class="w-max" people={hosts} />
 					</div>
 					<div
-						class="grid frid-cols-1 grid-rows-2 md:grid-rows-1 md:grid-cols-2 rounded-xl overflow-hidden border bg-mono-800 gap-px border-mono-800"
+						class="frid-cols-1 grid grid-rows-2 gap-px overflow-hidden rounded-xl border border-mono-800 bg-mono-800 md:grid-cols-2 md:grid-rows-1"
 					>
 						<div
-							class="flex flex-col items-center justify-center md:justify-start md:items-start gap-4 ~p-2/4 bg-mono-950"
+							class="flex flex-col items-center justify-center gap-4 bg-mono-950 ~p-2/4 md:items-start md:justify-start"
 						>
 							<Timezone label="PST" timezone={schedule.timezone} date={schedule.datetime} />
 							<Timezone label="Local" timezone={null} date={schedule.datetime} />
 						</div>
-						<div class="grid ~p-2/4 gap-4 place-items-center bg-mono-950">
+						<div class="grid place-items-center gap-4 bg-mono-950 ~p-2/4">
 							<Countdown date={schedule.datetime} />
 						</div>
 					</div>

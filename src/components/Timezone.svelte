@@ -7,7 +7,7 @@
 		class: className,
 		date,
 		timezone = null,
-		label
+		label,
 	}: { class?: string; label: string; timezone?: string | null; date: Date } = $props();
 
 	const s = spacetime(date, timezone || Intl.DateTimeFormat().resolvedOptions().timeZone);
@@ -18,7 +18,7 @@
 </script>
 
 <div
-	class={cn('bg-mono-950/80 backdrop-blur-xl rounded-lg flex items-center gap-2 p-1', className)}
+	class={cn('flex items-center gap-2 rounded-lg bg-mono-950/80 p-1 backdrop-blur-xl', className)}
 >
 	<Pill variant="muted">{label}</Pill>
 	<Pill class="font-normal">

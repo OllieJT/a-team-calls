@@ -9,18 +9,18 @@
 	<div class="flex items-center pl-2">
 		{#each people as person}
 			<div
-				class="w-10 h-10 relative -ml-2 rounded-full ring-2 ring-mono-950 bg-mono-800 overflow-hidden"
+				class="relative -ml-2 h-10 w-10 overflow-hidden rounded-full bg-mono-800 ring-2 ring-mono-950"
 			>
-				<enhanced:img src={person.image} class="absolute w-full h-full inset-0 object-cover"
+				<enhanced:img src={person.image} class="absolute inset-0 h-full w-full object-cover"
 				></enhanced:img>
 			</div>
 		{/each}
 	</div>
-	<h2 class="text-lg text-mono-400 flex flex-wrap items-center gap-1">
+	<h2 class="flex flex-wrap items-center gap-1 text-lg text-mono-400">
 		{#each people as person, ix}
 			<a
 				href={person.url}
-				class="hover:text-white hover:decoration-primary-500 underline-offset-2 hover:underline decoration-2"
+				class="decoration-2 underline-offset-2 hover:text-white hover:underline hover:decoration-primary-500"
 				target="_blank"
 				rel="noopener"
 			>

@@ -5,17 +5,17 @@
 	const {
 		class: className,
 		children,
-		variant = 'none'
+		variant = 'none',
 	}: { class?: string; children: Snippet; variant?: 'bright' | 'muted' | 'none' } = $props();
 </script>
 
 <div
 	class={cn(
-		'rounded-[0.25rem] font-mono leading-none text-sm py-1 px-2 tracking-wider',
+		'rounded-[0.25rem] px-2 py-1 font-mono text-sm leading-none tracking-wider',
 		'text-mono-300',
-		variant === 'muted' && 'bg-white/5 ring-1 ring-white/10 text-mono-400',
-		variant === 'bright' && 'bg-white text-mono-950 font-extrabold',
-		className
+		variant === 'muted' && 'bg-white/5 text-mono-400 ring-1 ring-white/10',
+		variant === 'bright' && 'bg-white font-extrabold text-mono-950',
+		className,
 	)}
 >
 	{@render children()}
