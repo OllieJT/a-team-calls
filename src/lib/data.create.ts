@@ -11,6 +11,7 @@ export type Person = ReturnType<typeof createPerson>;
 
 export function createEvent(data: {
 	type: 'guide' | 'coach';
+	module: string[];
 	title: string;
 	guides: Person[];
 	color: TailwindColor;

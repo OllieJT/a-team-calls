@@ -28,7 +28,7 @@
 	>
 		{pad(days)}
 	</div>
-	<div class="col-start-1 row-start-2">D</div>
+	<div class="col-start-1 row-start-2">Days</div>
 
 	<!-- hours -->
 	<div
@@ -36,7 +36,7 @@
 	>
 		{pad(hours)}
 	</div>
-	<div class="col-start-2 row-start-2">H</div>
+	<div class="col-start-2 row-start-2">Hours</div>
 
 	<!-- minutes -->
 	<div
@@ -44,5 +44,5 @@
 	>
 		{pad(minutes)}
 	</div>
-	<div class="col-start-3 row-start-2">M</div>
+	<div class="col-start-3 row-start-2">Minutes</div>
 </div>

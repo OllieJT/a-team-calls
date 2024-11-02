@@ -36,7 +36,7 @@ export default {
 				white: '#fff',
 				black: '#000',
 				primary: colors.blue,
-				mono: colors.zinc,
+				mono: colors.slate,
 			},
 			containers: {
 				'5xs': '4rem',

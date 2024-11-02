@@ -6,6 +6,13 @@ export const TIMEZONE = [
 ] as const;
 export type Timezone = (typeof TIMEZONE)[number];
 
+export const TIMEZONE_LABEL = {
+	'America/Los_Angeles': 'PST',
+	'America/New_York': 'EST',
+	'Europe/London': 'BST',
+	'Europe/Paris': 'CET',
+} satisfies Record<Timezone, string>;
+
 export const TAILWIND_COLOR = [
 	// 'red',
 	'orange',

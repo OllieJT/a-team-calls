@@ -1,7 +1,7 @@
 <script lang="ts">
+	import Badge from '$components/Badge.svelte';
 	import { cn } from '$lib/utils';
 	import spacetime from 'spacetime';
-	import Pill from './Pill.svelte';
 
 	const {
 		class: className,
@@ -17,14 +17,20 @@
 	}
 </script>
 
-<div
-	class={cn('flex items-center gap-2 rounded-lg bg-mono-950/80 p-1 backdrop-blur-xl', className)}
->
-	<Pill variant="muted">{label}</Pill>
-	<Pill class="font-normal">
-		{capitalize(s.dayName())}
-		{capitalize(s.date().toString())}
-		{capitalize(s.monthName())}
-	</Pill>
-	<Pill variant="bright">{s.time()}</Pill>
+<div class={cn('gap-4g flex items-center', className)}>
+	<Badge>{label}</Badge>
+
+	<div class="grid flex-auto grid-cols-1 grid-rows-2 text-right">
+		<div class="text-xs leading-tight tracking-wide text-mono-400">{capitalize(s.dayName())}</div>
+		<div class="text-sm font-medium leading-tight text-mono-200">
+			<span>
+				{capitalize(s.date().toString())}
+				{capitalize(s.monthName())}
+			</span>
+			<span class="text-mono-400">at</span>
+			<span>
+				{s.time()}
+			</span>
+		</div>
+	</div>
 </div>
