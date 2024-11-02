@@ -46,6 +46,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"just-group-by": "^2.2.0"
+		"just-group-by": "^2.2.0",
+		"svead": "^0.0.13"
 	}
 }

@@ -4,11 +4,23 @@
 	import Countdown from '$components/Countdown.svelte';
 	import Timezone from '$components/Timezone.svelte';
 	import texture from '$images/texture.png?enhanced';
+	import thumbnail from '$images/thumbnail.png?enhanced';
 	import { TIMEZONE_LABEL } from '$lib/data.constants.js';
 	import '$lib/datetime';
+	import { Head } from 'svead';
 
 	const { data } = $props();
 </script>
+
+<Head
+	seo_config={{
+		title: 'Futur Accelerator Calls',
+		description: 'Upcoming Futur Accelerator calls',
+		url: 'https://a-team.designthen.dev/',
+		site_name: 'A-Team Calls',
+		open_graph_image: thumbnail.img.src,
+	}}
+/>
 
 <div class="fixed inset-0 -z-10">
 	<enhanced:img
