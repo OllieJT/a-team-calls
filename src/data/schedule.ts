@@ -21,7 +21,7 @@ export const SCHEDULE = [
 			month: 11,
 			year: 2024,
 			hour: 13,
-			minute: 0,
+			minute: 30,
 			tz: 'America/Los_Angeles',
 		},
 	}),
