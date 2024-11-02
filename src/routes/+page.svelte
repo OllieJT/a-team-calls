@@ -24,78 +24,113 @@
 <main class="relative z-10 mx-auto w-full max-w-7xl ~space-y-6/12 ~px-0/8 ~py-4/16">
 	<header>
 		<h1 class="max-w-160 text-balance font-semibold text-white ~text-xl/4xl">
-			Upcoming calls for the Futur Accelerator
+			Futur Accelerator Calls
 		</h1>
 	</header>
 
-	<ol class="grid w-full grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
-		{#each data.scheduledEvents.future as { event, hosts, schedule }}
-			{#if schedule}
-				<li
-					class="flex flex-col items-stretch divide-y divide-mono-800 rounded-2xl bg-mono-900 ring-1 ring-mono-800 backdrop-blur-md"
-					aria-label={event.title}
-				>
-					<!-- Title -->
-					<div class="flex items-center justify-between ~gap-2/4 ~p-4/6">
-						<h2 class="flex-auto font-medium text-white ~text-lg/xl">{event.title}</h2>
-						<div class="flex shrink-0 grow-0 items-center justify-end gap-1">
-							{#if event.module.length}
-								{#each event.module as module}
-									<Badge color={event.color}>
-										{module}
-									</Badge>
-								{/each}
-							{:else}
-								<Badge color={event.color}>A-Team</Badge>
-							{/if}
-						</div>
-					</div>
+	<section class=" ~space-y-3/6">
+		<h2 class="max-w-160 text-balance font-medium text-pink-400 ~text-base/xl">Upcoming Calls</h2>
 
-					<!-- Countdown -->
-					<div class="flex flex-auto items-center justify-center ~gap-2/4 ~p-4/6">
-						<h3 class="sr-only">Countdown</h3>
-						<Countdown date={schedule.datetime} />
-					</div>
-
-					<!-- Times -->
-					<div class="flex flex-col items-stretch ~gap-2/4 ~p-4/6">
-						<h3 class="sr-only">Times</h3>
-
-						<Timezone
-							label={TIMEZONE_LABEL[schedule.timezone]}
-							timezone={schedule.timezone}
-							date={schedule.datetime}
-						/>
-						<hr class="border-mono-800" />
-						<Timezone label="Local" timezone={null} date={schedule.datetime} />
-					</div>
-
-					<!-- Hosts -->
-					<div class="flex items-center justify-between ~gap-2/4 ~p-4/6">
-						<h3 class="sr-only">Call Hosts</h3>
-						<AvatarStack people={hosts} class="shrink-0 grow-0" />
-
-						<p class="flex flex-auto flex-wrap items-center gap-1 text-mono-400 ~text-base/lg">
-							<span>With</span>
-							{#each hosts as person, ix}
-								<a
-									href={person.url}
-									class="text-mono-300 decoration-2 underline-offset-2 hover:text-white hover:underline hover:decoration-primary-500"
-									target="_blank"
-									rel="noopener"
-								>
-									{person.name}
-								</a>
-								{#if ix !== hosts.length - 1}
-									<span>&</span>
+		<ol class="grid w-full grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
+			{#each data.scheduledEvents.future as { event, hosts, schedule }}
+				{#if schedule}
+					<li
+						class="flex flex-col items-stretch divide-y divide-mono-800 rounded-2xl bg-mono-900 ring-1 ring-mono-800 backdrop-blur-md"
+						aria-label={event.title}
+					>
+						<!-- Title -->
+						<div class="flex items-center justify-between ~gap-2/4 ~p-4/6">
+							<h3 class="flex-auto font-medium text-white ~text-lg/xl">{event.title}</h3>
+							<div class="flex shrink-0 grow-0 items-center justify-end gap-1">
+								{#if event.module.length}
+									{#each event.module as module}
+										<Badge color={event.color}>
+											{module}
+										</Badge>
+									{/each}
+								{:else}
+									<Badge color={event.color}>A-Team</Badge>
 								{/if}
-							{/each}
+							</div>
+						</div>
+
+						<!-- Countdown -->
+						<div class="flex flex-auto items-center justify-center ~gap-2/4 ~p-4/6">
+							<h4 class="sr-only">Countdown</h4>
+							<Countdown date={schedule.datetime} />
+						</div>
+
+						<!-- Times -->
+						<div class="flex flex-col items-stretch ~gap-2/4 ~p-4/6">
+							<h4 class="sr-only">Times</h4>
+
+							<Timezone
+								label={TIMEZONE_LABEL[schedule.timezone]}
+								timezone={schedule.timezone}
+								date={schedule.datetime}
+							/>
+							<hr class="border-mono-800" />
+							<Timezone label="Local" timezone={null} date={schedule.datetime} />
+						</div>
+
+						<!-- Hosts -->
+						<div class="flex items-center justify-between ~gap-2/4 ~p-4/6">
+							<h4 class="sr-only">Call Hosts</h4>
+							<AvatarStack people={hosts} class="shrink-0 grow-0" />
+
+							<p class="flex flex-auto flex-wrap items-center gap-1 text-mono-400 ~text-base/lg">
+								<span>With</span>
+								{#each hosts as person, ix}
+									<a
+										href={person.url}
+										class="text-mono-300 decoration-2 underline-offset-2 hover:text-white hover:underline hover:decoration-primary-500"
+										target="_blank"
+										rel="noopener"
+									>
+										{person.name}
+									</a>
+									{#if ix !== hosts.length - 1}
+										<span>&</span>
+									{/if}
+								{/each}
+							</p>
+						</div>
+					</li>
+				{/if}
+			{/each}
+		</ol>
+	</section>
+
+	<hr class="border-mono-800" />
+
+	<section class=" ~space-y-3/6">
+		<h2 class="max-w-160 text-balance font-medium text-pink-400 ~text-base/xl">Regular Hosts</h2>
+
+		<ul class="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+			{#each data.people as person}
+				{@const prettyUrl = person.url
+					.replace('https://', '')
+					.replace('http://', '')
+					.replace('www.', '')
+					.split('/')[0]}
+				<li class="flex items-center gap-6">
+					<enhanced:img src={person.image} class="inset-0 rounded-3xl object-cover ~size-12/24" />
+					<div>
+						<h3 class="font-medium text-white ~text-base/lg">{person.name}</h3>
+						<p class="font-mono text-mono-400">
+							<a
+								href={person.url}
+								target="_blank"
+								rel="noopener"
+								class="text-mono-300 decoration-2 underline-offset-2 hover:text-white hover:underline hover:decoration-primary-500"
+								>{prettyUrl}</a
+							>
 						</p>
 					</div>
 				</li>
-			{/if}
-		{/each}
-	</ol>
+			{/each}
+		</ul>
+	</section>
 </main>
 
 <style lang="postcss">
