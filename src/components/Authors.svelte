@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Person } from '$lib/data';
+	import type { Person } from '$lib/data.create';
 	import { cn } from '$lib/utils';
 
 	const { class: className, people }: { class?: string; people: Person[] } = $props();
