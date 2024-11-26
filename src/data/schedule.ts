@@ -1,4 +1,5 @@
 import { EVENT } from '$data/event';
+import { PERSON } from '$data/people';
 import {
 	createMonthlyCall,
 	createOneCall,
@@ -37,17 +38,15 @@ export const SCHEDULE = [
 			minute: 0,
 			tz: 'America/Los_Angeles',
 		},
-		// hosts: [PERSON.stephen, PERSON.monte],
+		hosts: [PERSON.stephen, PERSON.monte],
 	}),
 
 	// A04 + A06
-	createOneCall({
+	createMonthlyCall({
 		event: EVENT.A04_A06,
 		schedule: {
-			day: 6,
-			month: 11,
-			year: 2024,
-			hour: 10,
+			weekday: 'wednesday',
+			hour: 12,
 			minute: 30,
 			tz: 'America/Los_Angeles',
 		},
