@@ -60,7 +60,7 @@ export const SCHEDULE = [
 			day: 3,
 			month: 12,
 			year: 2024,
-			hour: 11,
+			hour: 10,
 			minute: 0,
 			tz: 'America/Los_Angeles',
 		},
