@@ -90,3 +90,56 @@ export function createWeeklyCall({
 		hosts: hosts || event.guides,
 	};
 }
+export function createMonthlyCall({
+	schedule: { hour, minute, tz, weekday },
+	event,
+	hosts = null,
+}: CallType<{
+	hour: number;
+	minute: number;
+	weekday: 'monday' | 'tuesday' | 'wednesday' | 'thursday' | 'friday' | 'saturday' | 'sunday';
+	tz: Timezone;
+}>): ScheduledCall {
+	const now = spacetime.now(tz);
+	const firstDayOfMonth = now.startOf('month');
+
+	// Convert weekday string to number (0-6)
+	const weekdayNum = [
+		'sunday',
+		'monday',
+		'tuesday',
+		'wednesday',
+		'thursday',
+		'friday',
+		'saturday',
+	].indexOf(weekday.toLowerCase());
+
+	// Find first occurrence of weekday in current month
+	let targetDate = firstDayOfMonth;
+	while (targetDate.day() !== weekdayNum) {
+		targetDate = targetDate.add(1, 'day');
+	}
+
+	// Set the time
+	targetDate = targetDate.hour(hour).minute(minute);
+
+	// If we've already passed this month's occurrence, move to next month
+	if (targetDate.isBefore(now)) {
+		targetDate = targetDate.add(1, 'month').startOf('month');
+		while (targetDate.day() !== weekdayNum) {
+			targetDate = targetDate.add(1, 'day');
+		}
+		targetDate = targetDate.hour(hour).minute(minute);
+	}
+
+	const datetime = targetDate.goto('UTC');
+
+	return {
+		event,
+		schedule: {
+			datetime: datetime.toNativeDate(),
+			timezone: tz,
+		},
+		hosts: hosts || event.guides,
+	};
+}
