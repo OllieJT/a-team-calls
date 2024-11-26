@@ -46,7 +46,7 @@ export const SCHEDULE = [
 		event: EVENT.A04_A06,
 		schedule: {
 			weekday: 'wednesday',
-			hour: 12,
+			hour: 10,
 			minute: 30,
 			tz: 'America/Los_Angeles',
 		},
