@@ -1,6 +1,10 @@
 import { EVENT } from '$data/event';
-import { PERSON } from '$data/people';
-import { createOneCall, createWeeklyCall, type ScheduledCall } from '$lib/data.create';
+import {
+	createMonthlyCall,
+	createOneCall,
+	createWeeklyCall,
+	type ScheduledCall,
+} from '$lib/data.create';
 
 export const SCHEDULE = [
 	createWeeklyCall({
@@ -14,23 +18,10 @@ export const SCHEDULE = [
 	}),
 
 	// A02
-	createOneCall({
+	createMonthlyCall({
 		event: EVENT.A02,
 		schedule: {
-			day: 6,
-			month: 11,
-			year: 2024,
-			hour: 13,
-			minute: 30,
-			tz: 'America/Los_Angeles',
-		},
-	}),
-	createOneCall({
-		event: EVENT.A02,
-		schedule: {
-			day: 21,
-			month: 10,
-			year: 2024,
+			weekday: 'monday',
 			hour: 13,
 			minute: 0,
 			tz: 'America/Los_Angeles',
@@ -38,17 +29,15 @@ export const SCHEDULE = [
 	}),
 
 	// A03
-	createOneCall({
+	createMonthlyCall({
 		event: EVENT.A03,
 		schedule: {
-			day: 6,
-			month: 11,
-			year: 2024,
+			weekday: 'wednesday',
 			hour: 12,
 			minute: 0,
 			tz: 'America/Los_Angeles',
 		},
-		hosts: [PERSON.stephen, PERSON.monte],
+		// hosts: [PERSON.stephen, PERSON.monte],
 	}),
 
 	// A04 + A06
@@ -60,6 +49,19 @@ export const SCHEDULE = [
 			year: 2024,
 			hour: 10,
 			minute: 30,
+			tz: 'America/Los_Angeles',
+		},
+	}),
+
+	// A07
+	createOneCall({
+		event: EVENT.A07,
+		schedule: {
+			day: 3,
+			month: 12,
+			year: 2024,
+			hour: 11,
+			minute: 0,
 			tz: 'America/Los_Angeles',
 		},
 	}),
